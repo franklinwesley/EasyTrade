@@ -28,7 +28,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(MySQLiteContract.SQL_CREATE_TABLE_JOGO);
+        sqLiteDatabase.execSQL(MySQLiteContract.SQL_CREATE_TABLE_GAME);
     }
 
     @Override
@@ -41,21 +41,21 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     public boolean inserirJogo(String nome, String curso) {
         this.getWritableDatabase().execSQL(
-                MySQLiteContract.SQL_INSERT_JOGO_ENTRY,
+                MySQLiteContract.SQL_INSERT_GAME_ENTRY,
                 new Object[] {nome, curso});
         return true;
     }
 
     public List<Jogo> recuperarJogos() {
-        Cursor cursor = this.mSQLiteDB.rawQuery(MySQLiteContract.SQL_SELECT_JOGO, null);
+        Cursor cursor = this.mSQLiteDB.rawQuery(MySQLiteContract.SQL_SELECT_GAME, null);
         if(cursor.moveToFirst()) {
             List<Jogo> jogos = new ArrayList<Jogo>();
             do {
-                int nomeColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_NOME);
-                int descricaoColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_DESCRICAO);
-                int plataformaColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_PLATAFORMA);
-                int categoriaColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_CATEGORIA);
-                int fotoColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_FOTO);
+                int nomeColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_NAME);
+                int descricaoColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_DESCRIPTION);
+                int plataformaColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_PLATFORM);
+                int categoriaColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_CATEGORY);
+                int fotoColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_PHOTO);
 
                 String nome = cursor.getString(nomeColumnIndex);
                 String descricao = cursor.getString(descricaoColumnIndex);
@@ -76,14 +76,14 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     public boolean recuperarJogo (String nome) {
         this.getWritableDatabase().execSQL(
-                MySQLiteContract.SQL_SELECT_JOGO_ENTRY,
+                MySQLiteContract.SQL_SELECT_GAME_ENTRY,
                 new Object[] {nome});
         return true;
     }
 
     public boolean removerJogo (String nome) {
         this.getWritableDatabase().execSQL(
-                MySQLiteContract.SQL_DELETE_JOGO_ENTRY,
+                MySQLiteContract.SQL_DELETE_GAME_ENTRY,
                 new Object[] {nome});
         return true;
     }
