@@ -5,18 +5,37 @@ package com.example.huawei.easytrade.Model;
  */
 public class Game {
 
-    private String nome;
-    private String descricao;
-    private String plataforma;
-    private String categoria;
-    private String foto;
+    private String name;
+    private String description;
+    private String platform;
+    private String category;
+    private String photo;
 
-    public Game(String nome, String descricao, String plataforma, String categoria, String foto) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.plataforma = plataforma;
-        this.categoria = categoria;
-        this.foto = foto;
+    public Game(String name, String description, String platform, String category, String photo) {
+        this.name = name;
+        this.description = description;
+        this.platform = platform;
+        this.category = category;
+        this.photo = photo;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
 }
