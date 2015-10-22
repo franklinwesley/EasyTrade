@@ -7,7 +7,7 @@ import android.provider.BaseColumns;
  */
 public class MySQLiteContract {
     /**
-     * Table 'Jogo' structure definition.
+     * Table 'Game' structure definition.
      * @author Franklin Welsey
      *
      */

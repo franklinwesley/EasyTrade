@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.huawei.easytrade.Model.Jogo;
+import com.example.huawei.easytrade.Model.Game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +46,10 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public List<Jogo> recuperarJogos() {
+    public List<Game> recuperarJogos() {
         Cursor cursor = this.mSQLiteDB.rawQuery(MySQLiteContract.SQL_SELECT_GAME, null);
         if(cursor.moveToFirst()) {
-            List<Jogo> jogos = new ArrayList<Jogo>();
+            List<Game> games = new ArrayList<Game>();
             do {
                 int nomeColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_NAME);
                 int descricaoColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_DESCRIPTION);
@@ -64,11 +64,11 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
                 String foto = cursor.getString(fotoColumnIndex);
 
 
-                jogos.add(new Jogo(nome,descricao,plataforma,categoria,foto));
+                games.add(new Game(nome,descricao,plataforma,categoria,foto));
 
             } while (cursor.moveToNext());
 
-            return jogos;
+            return games;
         } else {
             return null;
         }
