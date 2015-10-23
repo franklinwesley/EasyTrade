@@ -11,7 +11,7 @@ public class MySQLiteContract {
      * @author Franklin Welsey
      *
      */
-    public static abstract class Jogo implements BaseColumns {
+    public static abstract class Game implements BaseColumns {
         public static final String TABLE_NAME = "Game";
 
         public static final String COLUMN_NAME = "name";
@@ -31,46 +31,46 @@ public class MySQLiteContract {
      * CREATE TABLE Aluno SQL.
      */
     protected static final String SQL_CREATE_TABLE_GAME =
-            "CREATE TABLE " + Jogo.TABLE_NAME + " (" +
-                    Jogo._ID + " INTEGER PRIMARY KEY" + COMMA_SEP +
-                    Jogo.COLUMN_NAME + STRING_TYPE + COMMA_SEP +
-                    Jogo.COLUMN_DESCRIPTION + STRING_TYPE + COMMA_SEP +
-                    Jogo.COLUMN_PLATFORM + STRING_TYPE + COMMA_SEP +
-                    Jogo.COLUMN_CATEGORY+ STRING_TYPE + COMMA_SEP +
-                    Jogo.COLUMN_PHOTO+ STRING_TYPE + " )";
+            "CREATE TABLE " + Game.TABLE_NAME + " (" +
+                    Game._ID + " INTEGER PRIMARY KEY" + COMMA_SEP +
+                    Game.COLUMN_NAME + STRING_TYPE + COMMA_SEP +
+                    Game.COLUMN_DESCRIPTION + STRING_TYPE + COMMA_SEP +
+                    Game.COLUMN_PLATFORM + STRING_TYPE + COMMA_SEP +
+                    Game.COLUMN_CATEGORY+ STRING_TYPE + COMMA_SEP +
+                    Game.COLUMN_PHOTO+ STRING_TYPE + " )";
 
     /**
      * SQL COUNT
      */
     protected static final String SQL_COUNT_GAME_ENTRIES =
-            "SELECT count(*) FROM " + Jogo.TABLE_NAME;
+            "SELECT count(*) FROM " + Game.TABLE_NAME;
 
     /**
      * SQL SELECT ENTRY
      */
     protected static final String SQL_SELECT_GAME_ENTRY =
-            "SELECT * FROM " + Jogo.TABLE_NAME + " WHERE " +
-                    Jogo.COLUMN_NAME + " = ?";
+            "SELECT * FROM " + Game.TABLE_NAME + " WHERE " +
+                    Game.COLUMN_NAME + " = ?";
 
     /**
      * SQL INSERT ENTRY
      */
     protected static final String SQL_INSERT_GAME_ENTRY =
-            "INSERT INTO " + Jogo.TABLE_NAME + " (" +
-                    Jogo.COLUMN_NAME + COMMA_SEP +
-                    Jogo.COLUMN_DESCRIPTION + COMMA_SEP +
-                    Jogo.COLUMN_PLATFORM + COMMA_SEP +
-                    Jogo.COLUMN_CATEGORY + COMMA_SEP +
-                    Jogo.COLUMN_PHOTO + ")" +
+            "INSERT INTO " + Game.TABLE_NAME + " (" +
+                    Game.COLUMN_NAME + COMMA_SEP +
+                    Game.COLUMN_DESCRIPTION + COMMA_SEP +
+                    Game.COLUMN_PLATFORM + COMMA_SEP +
+                    Game.COLUMN_CATEGORY + COMMA_SEP +
+                    Game.COLUMN_PHOTO + ")" +
                     " VALUES (?,?,?,?,?)";
 
     /**
      * SQL DELETE ENTRY
      */
     protected static final String SQL_DELETE_GAME_ENTRY =
-            "DELETE FROM " + Jogo.TABLE_NAME + " WHERE " +
-                    Jogo.COLUMN_NAME + " = ?";
+            "DELETE FROM " + Game.TABLE_NAME + " WHERE " +
+                    Game.COLUMN_NAME + " = ?";
 
     protected static final String SQL_SELECT_GAME =
-            "SELECT * FROM " + Jogo.TABLE_NAME;
+            "SELECT * FROM " + Game.TABLE_NAME;
 }
