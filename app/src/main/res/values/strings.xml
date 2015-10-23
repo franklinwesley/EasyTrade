@@ -24,6 +24,6 @@
     <string name="login_lbl">Login</string>
     <string name="password_lbl">Password</string>
     <string name="image_lbl">Image</string>
-    <string name="create_lbl">Create</string>
+    <string name="create_lbl">Create Account</string>
 
 </resources>
