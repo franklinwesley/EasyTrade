@@ -5,8 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.huawei.easytrade.Model.Game;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +27,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(MySQLiteContract.SQL_CREATE_TABLE_GAME);
+        sqLiteDatabase.execSQL(MySQLiteContractUser.SQL_CREATE_TABLE_USER);
     }
 
     @Override
@@ -46,16 +45,16 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public List<Game> recuperarJogos() {
+    public List<com.example.huawei.easytrade.Model.Game> recuperarJogos() {
         Cursor cursor = this.mSQLiteDB.rawQuery(MySQLiteContract.SQL_SELECT_GAME, null);
         if(cursor.moveToFirst()) {
-            List<Game> games = new ArrayList<Game>();
+            List<com.example.huawei.easytrade.Model.Game> games = new ArrayList<com.example.huawei.easytrade.Model.Game>();
             do {
-                int nomeColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_NAME);
-                int descricaoColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_DESCRIPTION);
-                int plataformaColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_PLATFORM);
-                int categoriaColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_CATEGORY);
-                int fotoColumnIndex = cursor.getColumnIndex(MySQLiteContract.Jogo.COLUMN_PHOTO);
+                int nomeColumnIndex = cursor.getColumnIndex(MySQLiteContract.Game.COLUMN_NAME);
+                int descricaoColumnIndex = cursor.getColumnIndex(MySQLiteContract.Game.COLUMN_DESCRIPTION);
+                int plataformaColumnIndex = cursor.getColumnIndex(MySQLiteContract.Game.COLUMN_PLATFORM);
+                int categoriaColumnIndex = cursor.getColumnIndex(MySQLiteContract.Game.COLUMN_CATEGORY);
+                int fotoColumnIndex = cursor.getColumnIndex(MySQLiteContract.Game.COLUMN_PHOTO);
 
                 String nome = cursor.getString(nomeColumnIndex);
                 String descricao = cursor.getString(descricaoColumnIndex);
@@ -64,7 +63,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
                 String foto = cursor.getString(fotoColumnIndex);
 
 
-                games.add(new Game(nome,descricao,plataforma,categoria,foto));
+                games.add(new com.example.huawei.easytrade.Model.Game(nome,descricao,plataforma,categoria,foto));
 
             } while (cursor.moveToNext());
 
@@ -87,4 +86,17 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
                 new Object[] {nome});
         return true;
     }
+
+    //// TODO: 23/10/15 Parte do banco de dados do User
+
+    public boolean insertUser(String name, String phone, String email, String login, String password, String photo) {
+        this.getWritableDatabase().execSQL(
+                MySQLiteContractUser.SQL_INSERT_USER_ENTRY,
+                new Object[] {name, phone, email, login, password, photo});
+        return true;
+    }
+
+
+
+
 }
