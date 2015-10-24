@@ -20,6 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button buttonCreateAccount;
     private MySQLiteOpenHelper dbHelper;
 
+    //// TODO: 23/10/15 fazer os testes para a inserção de cada usuario se ele existir, pegar o bd da tela de login
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
