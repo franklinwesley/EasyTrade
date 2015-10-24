@@ -32,6 +32,5 @@ public class HistoricActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager =  new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         this.recyclerView.setLayoutManager(linearLayoutManager);
-
     }
 }
