@@ -25,7 +25,7 @@ public class MySQLiteContractUser {
     private static final String COMMA_SEP = ",";
 
     /**
-     * CREATE TABLE Aluno SQL.
+     * CREATE TABLE User SQL.
      */
     protected static final String SQL_CREATE_TABLE_USER =
             "CREATE TABLE " + User.TABLE_NAME + " (" +

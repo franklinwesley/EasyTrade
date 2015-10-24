@@ -1,5 +1,6 @@
 package com.example.huawei.easytrade;
 
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,9 +47,17 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString();
                 String photo = imageViewPhoto.toString();
 
-                dbHelper.insertUser(name, phone, email, login, password, photo);
+                if (dbHelper.retrievesUser(email, login) != null){
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(getApplicationContext());
+                    dlg.setMessage("Usario com Login ou email já existem");
+                    dlg.setNeutralButton("OK", null);
+                    dlg.show();
+                } else {
+                    dbHelper.insertUser(name, phone, email, login, password, photo);
+                }
             }
         });
 
     }
+
 }
